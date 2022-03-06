@@ -1,0 +1,20 @@
+{% extends 'tasks/base.html' %}
+
+{% block content %}
+    <div>
+        <form action="POST">
+            {% csrf_token %}
+
+            <h3 style="margin-bottom: 1.3rem;">Add New Task</h3>
+
+            {% for task_field in tasks %}
+                <div style="margin-bottom:1rem">
+                    <label for="">{{ task_field.label_tag }}</label>
+                    {{ task_field }}
+                </div>
+            {% endfor %}
+            
+            <button class="btn edit-task" type="submit">Submit</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'tasks/base.html' %}
+
+{% block content %}
+    {% for task in tasks %}
+        <div class="task-table">
+            <div class="task-title">
+                <a href="{% url 'tasks:task-view' task.id %}">{{ task.title }}</a>
+            </div>
+
+            <div class="actions-btn">
+                <a class="btn task-view" href="{% url 'tasks:task-view' task.id %}">Task View</a>
+                <a class=" btn edit-task" href="{% url 'tasks:task-edit' task.id %}">Task Edit</a>
+                <a class="btn delete" style="margin-right: 1rem;" href=" {% url 'tasks:task-delete' task.id %} ">Delete</a>
+            </div>
+        </div>
+    {% endfor %}
+
+    
+{% endblock %}
