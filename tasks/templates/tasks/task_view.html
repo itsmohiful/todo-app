@@ -1,17 +1,22 @@
-{% extends 'tasks/base.html' %}
+{% extends 'tasks/base.html' %} {% block content %}
+<h4 style="padding: 7px 5px">{{ task.title }}</h4>
 
-{% block content %}
-    <h4 style="padding: 7px 5px;">{{ task.title }}</h4>
+<p style="margin-bottom: 20px">{{ task.desc }}</p>
 
-    <p style="margin-bottom:20px;"> {{ task.desc }} </p>
+{% if task.is_complete %}
+<p style="margin-bottom: 20px">
+  Task Status: <span style="color: rgb(3, 129, 45)">Complete</span>
+</p>
 
-        {% if task.is_complete %}
-            <p style="margin-bottom:20px;"> Task Status: <span style="color: rgb(3, 129, 45);">Complete</span> </p>
+{% else %}
+<p style="margin-bottom: 20px">
+  Task Status: <span style="color: rgb(141, 6, 6)">Incomplete</span>
+</p>
+{% endif %}
 
-        {% else %}
-            <p style="margin-bottom:20px;"> Task Status: <span style="color: rgb(141, 6, 6);">Incomplete</span> </p>
-        {% endif %}
-    
-
-    <button class="btn task-view" >Back</button>
+<button class="btn task-view">
+  <a style="color: #fff; text-decoration: none" href="{% url 'tasks:index' %}"
+    >Back</a
+  >
+</button>
 {% endblock %}

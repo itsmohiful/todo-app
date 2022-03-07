@@ -1,11 +1,20 @@
-{% extends 'tasks/base.html' %}
+{% extends 'tasks/base.html' %} {% block content %}
+<h4 style="margin-bottom: 25px">
+  Are you sure to delete this task - " {{ task.title }} " ?
+</h4>
+<form action="" method="POST">
+  {% csrf_token %}
 
-{% block content %}
-    <h4 style="margin-bottom: 25px;">Are you sure to delete this task - " {{ task.title }} " ?</h4>
-    <form action="" method="POST">
-        {% csrf_token %}
-
-        <a class="btn edit-task" style="text-decoration: none;" href="{% url 'tasks:index' %}">Cancel</a>
-        <button type="submit" class="btn delete">Delete</button>
-    </form>
+  <a
+    class="btn edit-task"
+    style="text-decoration: none"
+    href="{% url 'tasks:index' %}"
+    >Cancel</a
+  >
+  <button class="btn task-view">
+    <a style="color: #fff; text-decoration: none" href="{% url 'tasks:index' %}"
+      >Back</a
+    >
+  </button>
+</form>
 {% endblock %}
